@@ -27,9 +27,7 @@ GIT_PROMPT_ONLY_IN_REPO=1
 # GIT_PROMPT_THEME=Solarized # use theme optimized for solarized color scheme
 source ~/.bash-git-prompt/gitprompt.sh
 EOF
-source /root/.bashrc
 git clone git@github.com:Starsh82/projectOtus.git
-source /root/.bashrc
 cd /root/projectOtus
 git config --global user.email "starshmail@yandex.ru"
 git config --global user.name "Starsh"
