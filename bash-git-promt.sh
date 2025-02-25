@@ -1,7 +1,7 @@
 #/bin/bash
 apt install git -y
 git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt --depth=1
-cat >> 
+cat >> /root/.bashrc <<EOF 
 ###########################################################################################
 # Set config variables first
 GIT_PROMPT_ONLY_IN_REPO=1
