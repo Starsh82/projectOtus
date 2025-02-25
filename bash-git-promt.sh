@@ -10,3 +10,4 @@ if [ -f "\$HOME/.bash-git-prompt/gitprompt.sh" ]; then
 fi
 EOF
 source ~/.bashrc
+git clone git@github.com:Starsh82/projectOtus.git
