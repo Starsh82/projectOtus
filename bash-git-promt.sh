@@ -1,11 +1,12 @@
-#/bin/bash
-apt install git -y
-if test -d ~/projectOtus; then
-	echo bash-git-promp is alredy installed;
+#!/bin/bash
+#apt install git -y
+dir="/root/.bash-git-prompt"
+if [ -e $dir ]
+then
+	echo "bash-git-promp is alredy installed"
 else
 	git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt --depth=1
-	cat >> /root/.bashrc <<EOF 
-	###########################################################################################
+	echo "###########################################################################################
 	# Set config variables first
 	GIT_PROMPT_ONLY_IN_REPO=1
 
@@ -29,10 +30,13 @@ else
 	# GIT_PROMPT_THEME_FILE=~/.git-prompt-colors.sh
 	# GIT_PROMPT_THEME=Solarized # use theme optimized for solarized color scheme
 	source ~/.bash-git-prompt/gitprompt.sh
-	EOF
+	" >> /root/ttt
 fi
-if test -d ~/projectOtus.git; then
-	echo directory projectOtus.git exists
+
+dir="/root/projectOtus"
+if [ -e $dir ]
+then
+	echo "directory /root/projectOtus alredy exists"
 else
 	git clone git@github.com:Starsh82/projectOtus.git
 	cd /root/projectOtus
