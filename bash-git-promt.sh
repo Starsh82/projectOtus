@@ -30,8 +30,9 @@ else
 	# GIT_PROMPT_THEME_FILE=~/.git-prompt-colors.sh
 	# GIT_PROMPT_THEME=Solarized # use theme optimized for solarized color scheme
 	source ~/.bash-git-prompt/gitprompt.sh
-	" >> /root/ttt
+	" >> /root/.bashrc
 fi
+source /root/.bashrc
 
 dir="/root/projectOtus"
 if [ -e $dir ]
