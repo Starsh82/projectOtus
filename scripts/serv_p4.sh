@@ -3,11 +3,14 @@
 #Установка prometheus
 apt install -y prometheus
 systemctl enable --now prometheus-node-exporter
+cp ./configs/serv_p4/prometheus/prometheus.yml /etc/prometheus/
+systemctl restart prometheus
 
 #Установка grafana
 apt install -y adduser libfontconfig1
 dpkg -i /opt/grafana_11.4.0_amd64.deb
-systemctl enable --now grafana-server.service
+systemctl daemon-reload
+systemctl start grafana-server
 
 #Установка ELK
 #Установка ES
