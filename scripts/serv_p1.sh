@@ -1,10 +1,8 @@
 #!/bin/bash
 
-#Установка nginx
+#Установка nginx, копирование конфигов
 apt install -y nginx
 systemctl enable nginx.service
-
-#Копирование рабочих конфигов и перезпуск nginx
 cp -r /root/projectOtus/configs/serv_p1/nginx/* /etc/nginx/
 systemctl restart nginx.service
 
@@ -12,3 +10,10 @@ systemctl restart nginx.service
 echo "!!!!!Установка prometheus-node-exporter!!!!!"
 apt install -y prometheus-node-exporter
 systemctl enable --now prometheus-node-exporter
+
+#Установка filebeat_8.9.1
+dpkg -i /opt/filebeat_8.9.1_amd64-224190-bc3f59.deb
+systemctl enable filebeat.service
+cp /root/projectOtus/configs/serv_p1/filebeat/filebeat.yml /etc/filebeat/
+
+#Установка и настройка MySQL
