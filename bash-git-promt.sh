@@ -29,7 +29,13 @@ GIT_PROMPT_ONLY_IN_REPO=1
 # GIT_PROMPT_THEME=Custom # use custom theme specified in file GIT_PROMPT_THEME_FILE (default ~/.git-prompt-colors.sh)
 # GIT_PROMPT_THEME_FILE=~/.git-prompt-colors.sh
 # GIT_PROMPT_THEME=Solarized # use theme optimized for solarized color scheme
-source ~/.bash-git-prompt/gitprompt.sh" >> /root/.bashrc
+source ~/.bash-git-prompt/gitprompt.sh
+
+#Вход в projectOtus и выполнение git pull
+dir="/root/projectOtus"
+if [ -e $dir ]
+then source /root/projectOtus/inprojectOtus.sh
+fi" >> /root/.bashrc
 fi
 #source /root/.bashrc
 
