@@ -8,9 +8,10 @@ systemctl restart prometheus
 
 #Установка grafana
 apt install -y adduser libfontconfig1
+apt install -y musl
 dpkg -i /opt/grafana_11.4.0_amd64.deb
 systemctl daemon-reload
-systemctl start grafana-server
+systemctl enable --now grafana-server
 
 #Установка ELK
 #Установка ES
