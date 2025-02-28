@@ -15,4 +15,11 @@
 Порядок действий по восстановлению:  
 
     wget https://raw.githubusercontent.com/Starsh82/projectOtus/refs/heads/main/bash-git-promt.sh
+
 Сервер 1:
+
+    hostnamectl hostname p1-nginx-mysql-master
+    hostnamectl hostname p2-apache21-mysql-slave
+    hostnamectl hostname p3-apache22
+    hostnamectl hostname p4-mon-logs
+        
