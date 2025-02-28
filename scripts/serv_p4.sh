@@ -39,7 +39,7 @@ echo "kibana_8.9.1_amd64 установлен"
 #Установка logstash
 echo "Установка logstash_8.9.1_amd64"
 dpkg -i /opt/logstash_8.9.1_amd64-224190-11b1b0.deb
-sytemctl enable --now logstash.service
+systemctl enable --now logstash.service
 cp -r ~/projectOtus/configs/serv_p4/logstash/* /etc/logstash/
 systemctl restart logstash.service
 echo "logstash_8.9.1_amd64 установлен"
