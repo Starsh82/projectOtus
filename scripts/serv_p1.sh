@@ -29,5 +29,6 @@ echo "filebeat_8.9.1_amd64 установлен"
 apt install -y mysql-server-8.0
 mysql_secure_installation
 cp ~/projectOtus/configs/serv_p1/MySQL/mysqld.cnf /etc/mysql/mysql.conf.d/
+mysql CREATE USER 'repl'@'192.168.56.152' IDENTIFIED WITH 'caching_sha2_password' BY '123qwe';
 
 echo "mysql-server-8.0 установлен"
