@@ -22,4 +22,17 @@
     hostnamectl hostname p2-apache21-mysql-slave
     hostnamectl hostname p3-apache22
     hostnamectl hostname p4-mon-logs
-        
+
+Mysql:
+Создание схемы бд:
+
+    mysqldump --no-data employees > schema.sql
+
+Бэкап потабличный:
+
+    varDB="employees"
+  	mkdir $varDB
+	for varT in `mysql -N -e "show tables from $varDB;"`
+	    do
+			mysqldump --opt --single-transaction --events --routines $varDB $varT > $varDB/$varT.sql
+		done
