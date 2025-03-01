@@ -28,7 +28,7 @@ echo "filebeat_8.9.1_amd64 установлен"
 "Установка mysql-server-8.0"
 apt install -y mysql-server-8.0
 systemctl start mysql
-mysql_secure_installation
+#mysql_secure_installation
 cp ~/projectOtus/configs/serv_p1/MySQL/mysqld.cnf /etc/mysql/mysql.conf.d/
 systemctl restart mysql
 mysql -e "CREATE USER repl@'%' IDENTIFIED WITH 'caching_sha2_password' BY 'Pass1234#1234';"
