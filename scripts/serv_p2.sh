@@ -11,3 +11,16 @@ systemctl enable --now apache2.service
 echo "!!!!!Установка prometheus-node-exporter!!!!!"
 apt install -y prometheus-node-exporter
 systemctl enable --now prometheus-node-exporter
+
+#Установка и настройка MySQL
+"Установка mysql-server-8.0 (slave)"
+apt install -y mysql-server-8.0
+mysql_secure_installation
+cp ~/projectOtus/configs/serv_p2/MySQL/mysqld.cnf /etc/mysql/mysql.conf.d/
+systemctl restart mysql
+mysql -e 'STOP REPLICA;'
+mysql -e 'CHANGE REPLICATION SOURCE TO SOURCE_HOST='192.168.56.151', SOURCE_USER='repl', SOURCE_PASSWORD='123qwe', SOURCE_AUTO_POSITION = 1, GET_SOURCE_PUBLIC_KEY = 1;'
+mysql -e START REPLICA;'
+#mysql CREATE USER 'repl'@'%' IDENTIFIED WITH 'caching_sha2_password' BY '123qwe';
+#mysql GRANT REPLICATION SLAVE ON *.* TO repl@'%';
+echo "mysql-server-8.0 установлен (slave)"
