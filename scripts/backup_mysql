@@ -13,7 +13,7 @@ do
 		for varT in `mysql -N -e "show tables from $varDB;"`
 		do
 #			echo $varT
-			mysqldump --opt --single-transaction --events --routines $varDB $varT | gzip -9 > $varDB/$varT.gz
+			mysqldump --opt --single-transaction --events --routines $varDB $varT > $varDB/$varT.sql
 		done
 	fi
 done
