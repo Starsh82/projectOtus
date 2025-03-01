@@ -15,6 +15,7 @@ systemctl enable --now prometheus-node-exporter
 #Установка и настройка MySQL
 "Установка mysql-server-8.0 (slave)"
 apt install -y mysql-server-8.0
+systemctl start mysql
 mysql_secure_installation
 cp ~/projectOtus/configs/serv_p2/MySQL/mysqld.cnf /etc/mysql/mysql.conf.d/
 systemctl restart mysql
