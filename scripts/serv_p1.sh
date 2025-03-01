@@ -30,6 +30,6 @@ apt install -y mysql-server-8.0
 mysql_secure_installation
 cp ~/projectOtus/configs/serv_p1/MySQL/mysqld.cnf /etc/mysql/mysql.conf.d/
 systemctl restart mysql
-mysql CREATE USER 'repl'@'%' IDENTIFIED WITH 'caching_sha2_password' BY '123qwe';
-mysql GRANT REPLICATION SLAVE ON *.* TO repl@'%';
+mysql -e 'CREATE USER 'repl'@'%' IDENTIFIED WITH 'caching_sha2_password' BY '123qwe';'
+mysql -e 'GRANT REPLICATION SLAVE ON *.* TO repl@'%';'
 echo "mysql-server-8.0 установлен"
