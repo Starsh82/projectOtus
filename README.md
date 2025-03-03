@@ -38,19 +38,16 @@ Mysql:
 		done
 
 
+Потмабличный dump:
 
-
-
-
-#!/bin/bash
-
-mysql -e "stop slave;"
-mysql -e "show slave status\G" > $varDB/slave_info
-varDB="employees"
-mkdir $varDB
-mysqldump --no-data $varDB > $varDB/schema.sql
-for varT in `mysql -N -e "show tables from $varDB;"`
-    do
-                mysqldump --opt --single-transaction --events --routines $varDB $varT > $varDB/$varT.sql
-done
-mysql -e "start slave;"
+	#!/bin/bash
+	
+	mysql -e "stop slave;"
+	mysql -e "show slave status\G" > $varDB/slave_info
+	varDB="employees"
+	mkdir $varDB
+	mysqldump --no-data $varDB > $varDB/schema.sql
+	for varT in `mysql -N -e "show tables from $varDB;"`
+	do mysqldump --opt --single-transaction --events --routines $varDB $varT > $varDB/$varT.sql
+	done
+	mysql -e "start slave;"
