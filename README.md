@@ -9,19 +9,49 @@
 Сервер № 1: Nginx, MySQL (master), prometheus-node-exporter, filebeat (логи Nginx)  
 Сервер № 2: Apache2, MySQL (slave), prometheus-node-exporter  
 Сервер № 3: Apache2, prometheus-node-exporter  
-Сервер № 4: Prometheus + Grafana,  Elasticsearch + Logstash + Kibana, prometheus-node-exporter, filebeat???  
+Сервер № 4: Prometheus + Grafana,  Elasticsearch + Logstash + Kibana, prometheus-node-exporter
 
+Настройка серверов производится под пользователем root.  
+Порядок действий по восстановлению
+**Меняем hostname для серверов:**  
+   Сервер № 1:
+   
+		hostnamectl hostname p1-nginx-mysql-master
+   Сервер № 2:
+   
+		hostnamectl hostname p2-apache21-mysql-slave
+   Сервер № 3:
+   
+		hostnamectl hostname p3-apache22
+   Сервер № 4:
+   
+		hostnamectl hostname p4-mon-logs
+  
+**Скачиваем и выполняем скрипт на каждом сервере**
 
-Порядок действий по восстановлению:  
+   		apt update
+   		apt uprade -y
+		wget https://raw.githubusercontent.com/Starsh82/projectOtus/refs/heads/main/bash-git-promt.sh
+		bash /root/bash-git-promt.sh
+**Настройка сервера № 1:**
 
-    wget https://raw.githubusercontent.com/Starsh82/projectOtus/refs/heads/main/bash-git-promt.sh
+		bash /root/scripts/serv_p1.sh
+**Настройка сервера № 1:**
 
-Сервер 1:
+		bash /root/scripts/serv_p1.sh
+**Настройка сервера № 2:**
 
-    hostnamectl hostname p1-nginx-mysql-master
-    hostnamectl hostname p2-apache21-mysql-slave
-    hostnamectl hostname p3-apache22
-    hostnamectl hostname p4-mon-logs
+		bash /root/scripts/serv_p2.sh
+**Настройка сервера № 3:**
+   
+		bash /root/scripts/serv_p3.sh
+**Настройка сервера № 4:**
+   
+		bash /root/scripts/serv_p4.sh
+    
+    
+    
+    
 
 Mysql:
 Создание схемы бд:
@@ -38,7 +68,7 @@ Mysql:
 		done
 
 
-Потмабличный dump:
+Потабличный dump:
 
 	#!/bin/bash
 	
