@@ -5,61 +5,67 @@
 Происходит disaster!!!  
 Необходимо подготовить "дорожую карту" по восстановлению всех серверов "с нуля". Автоматизировать установку и настройку сервисов. И восстановить работу системы.*  
 
+<h3 align="center">Описание содержимого серверов</h3>
 Система состоит из 4 серверов на базе Linux Ubuntu 24.04:  
 Сервер № 1: Nginx, MySQL (master), prometheus-node-exporter, filebeat (логи Nginx)  
 Сервер № 2: Apache2, MySQL (slave), prometheus-node-exporter  
 Сервер № 3: Apache2, prometheus-node-exporter  
 Сервер № 4: Prometheus + Grafana,  Elasticsearch + Logstash + Kibana, prometheus-node-exporter
 
-Настройка серверов производится под пользователем root.  
-Порядок действий по восстановлению
+<h3 align="center">Настройка серверов</h3>  
+Настройка серверов производится под пользователем root.
+
+Порядок действий по восстановлению:  
 **Меняем hostname для серверов:**  
-   Сервер № 1:
+   Сервер № 1:  
    Копируем пакет filebeat_8.9.1_amd64-224190-bc3f59.deb в директорию /opt
    
-		hostnamectl hostname p1-nginx-mysql-master
+	hostnamectl hostname p1-nginx-mysql-master
    Сервер № 2:
    
-		hostnamectl hostname p2-apache21-mysql-slave
+	hostnamectl hostname p2-apache21-mysql-slave
    Сервер № 3:
    
-		hostnamectl hostname p3-apache22
-   Сервер № 4:
-   Копируем пакеты
-   - elasticsearch_8.9.1_amd64-224190-f79e75.deb
-   - grafana_11.4.0_amd64.deb
-   - kibana_8.9.1_amd64-224190-f7ebba.deb
-   - logstash_8.9.1_amd64-224190-11b1b0.deb  
+	hostnamectl hostname p3-apache22
+   Сервер № 4:  
+   Копируем пакеты:
+   * elasticsearch_8.9.1_amd64-224190-f79e75.deb
+   * grafana_11.4.0_amd64.deb
+   * kibana_8.9.1_amd64-224190-f7ebba.deb
+   * logstash_8.9.1_amd64-224190-11b1b0.deb  
+
    в директорию /opt
 
-> hostnamectl hostname p4-mon-logs
+    hostnamectl hostname p4-mon-logs
   
-**Скачиваем и выполняем скрипт на каждом сервере**
+**Скачиваем и выполняем скрипт на каждом сервере bash-git-promt.sh**
 
-   		apt update
-   		apt uprade -y
-		wget https://raw.githubusercontent.com/Starsh82/projectOtus/refs/heads/main/bash-git-promt.sh
-		bash /root/bash-git-promt.sh
-**Настройка сервера № 1:**
+    apt update
+	apt uprade -y
+    wget https://raw.githubusercontent.com/Starsh82/projectOtus/refs/heads/main/bash-git-promt.sh
+	bash /root/bash-git-promt.sh
+**Выполняем скрипт настройки сервера № 1:**
 
-		bash /root/scripts/serv_p1.sh
-**Настройка сервера № 1:**
+    bash /root/scripts/serv_p1.sh
+**Выполняем скрипт настройки сервера № 2:**
 
-		bash /root/scripts/serv_p1.sh
-**Настройка сервера № 2:**
+	bash /root/scripts/serv_p2.sh
+**Выполняем скрипт настройки сервера № 3:**
 
-		bash /root/scripts/serv_p2.sh
-**Настройка сервера № 3:**
+    bash /root/scripts/serv_p3.sh
+**Выполняем скрипт настройки сервера № 4:**
    
-		bash /root/scripts/serv_p3.sh
-**Настройка сервера № 4:**
-   
-		bash /root/scripts/serv_p4.sh
+	bash /root/scripts/serv_p4.sh
     
-    
-    
-    
+ <h3 align="center">Тестирование сервисов</h3>
+ 
+ \   
+ \     
+ \
+ \
+ \
 
+#################################################################  
 Mysql:
 Создание схемы бд:
 
